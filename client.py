@@ -19,11 +19,12 @@ if __name__ == "__main__":
   try:
     while True:
       rs = RotarySensor(ROTARY_PIN)
+      delay = calculateDelay(rs.read())
 
       if state == States.STARTUP:
         setup()
         setRGB(124, 242, 0)
-        scrollText(STARTUP_MSG, calculateDelay, rs)
+        scrollText(STARTUP_MSG, delay)
 
         state = States.IDLE
 
@@ -36,7 +37,7 @@ if __name__ == "__main__":
         if (BUTTON_STATE):
           while checkButton(BUTTON_PIN):
             # Polling to debounce button
-            time.sleep(0.001)
+            time.sleep(0.25)
 
           state = States.RECORDING
 
@@ -58,7 +59,7 @@ if __name__ == "__main__":
             res = requests.post(SERVER_URL + "/upload", files={"audio": file})
 
             setRGB(124, 242, 0)
-            scrollText(res.json()['text'], calculateDelay, rs)
+            scrollText(res.json()['text'], delay)
 
           state = States.IDLE
 
