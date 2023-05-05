@@ -21,7 +21,7 @@ if __name__ == "__main__":
       rs = RotarySensor(ROTARY_PIN)
       delay = calculateDelay(rs.read())
 
-      time.delay(0.25)
+      time.sleep(0.25)
 
       if state == States.STARTUP:
         setup()
