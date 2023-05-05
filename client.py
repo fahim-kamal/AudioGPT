@@ -3,6 +3,9 @@ from enum import Enum
 from grovepi import *
 from recording import *
 import time
+import requests
+
+SERVER_URL = "http://172.20.10.2:5000"
 
 class States(Enum):
   STARTUP = 1
@@ -39,10 +42,18 @@ if __name__ == "__main__":
 
           record(checkButton, BUTTON_PIN)
 
-          # Turn off Recording Status LED
+          # Turn off Recording Status LED and update LCD
           digitalWrite(RED_LED_PIN, 0)
+          setText_norefresh("Processing".ljust(16) + "Recording".ljust(16))
 
-          scrollText("Processing Recording")
+          # Send file to server
+          headers = {
+              "Content-Type": "audio/wav",
+          }
+
+          files = {'file': open('output.wav', "rb")}
+
+          req = requests.post(SERVER_URL + "/upload", files=files)
 
           state = States.IDLE
 
