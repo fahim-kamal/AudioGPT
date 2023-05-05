@@ -1,0 +1,11 @@
+
+# Packages
+bin/
+include/
+lib/
+
+# API Keys
+.env
+
+# Misc
+/pyvenv.cfg
