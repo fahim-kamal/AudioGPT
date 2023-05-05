@@ -64,8 +64,8 @@ if __name__ == "__main__":
             end = time.time()
             
             delta = end - start 
-            delay = {"text": res, "transcription": delta}
-            requests.post(SERVER_URL + "/delay", json=json.dumps(delay))
+            time_delay = {"text": res, "transcription": delta}
+            requests.post(SERVER_URL + "/delay", json=json.dumps(time_delay))
 
             setRGB(124, 242, 0)
             scrollText(res, delay)

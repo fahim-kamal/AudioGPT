@@ -29,9 +29,6 @@ def upload_file():
 @app.route("/delay", methods=['POST'])
 def upload_delay():
     with open("output.txt", "at") as file:
-        data = request.json 
-        text = data.get("text")
-        delay = data.get("delay")
-        file.write(text)
-        file.write(delay)
+        data = request.get_json(force=True)
+        file.write(data)
 
