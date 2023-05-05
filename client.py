@@ -1,6 +1,7 @@
 from helpers import *
 from enum import Enum
 from grovepi import *
+from recording import *
 
 class States(Enum):
   STARTUP = 1
@@ -26,7 +27,10 @@ if __name__ == "__main__":
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
 
-          
+          record(checkButton, BUTTON_PIN)
+
+          # Turn off Recording Status LED
+          digitalWrite(RED_LED_PIN, 0)
 
 
 

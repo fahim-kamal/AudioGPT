@@ -12,17 +12,21 @@ path = "./output.wav"
 def callback(indata, frames, time, status):
     q.put(indata.copy())
 
-try:
-    doesFileExist = os.path.isfile(path)
+def record(checkButton, PIN):
+    try:
+        doesFileExist = os.path.isfile(path)
 
-    if doesFileExist:
-        os.remove(path)
+        if doesFileExist:
+            os.remove(path)
 
-    with sf.SoundFile("output.wav", mode='x', samplerate=fs, channels=1) as file:
-        with sd.InputStream(samplerate=fs, device=MICROPHONE, channels=1, callback=callback):
-            while True:
-                file.write(q.get())
+        with sf.SoundFile("output.wav", mode='x', samplerate=fs, channels=1) as file:
+            with sd.InputStream(samplerate=fs, device=MICROPHONE, channels=1, callback=callback):
+                while checkButton(PIN) == False:
+                    file.write(q.get())
 
-except KeyboardInterrupt:
-    print("Recording Finished")
+    except KeyboardInterrupt:
+        print("Recording Finished")
+
+
+
 

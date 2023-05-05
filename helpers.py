@@ -37,3 +37,7 @@ def scrollText(text: str) -> None:
     setText_norefresh(line1 + line2)
     time.sleep(1)
 
+def checkButton(PIN):
+  button_state = digitalRead(PIN)
+
+  return button_state
