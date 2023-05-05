@@ -4,12 +4,30 @@ import time
 
 RED_LED_PIN = 7
 BUTTON_PIN = 2
+ROTARY_PIN = 0
+
+class RotarySensor():
+    def __init__(self, port):
+        self.port = port
+        self.ADC_REF = 5
+        self.GROVE_VCC = 5
+        self.FULL_ANGLE = 300
+    
+        pinMode(self.port, "INPUT")
+        time.sleep(1)
+
+    def read(self):
+        sensor_value = analogRead(self.port)
+        voltage = sensor_value * self.ADC_REF / 1023
+        degrees = (voltage * self.FULL_ANGLE) / self.GROVE_VCC
+        return round(degrees)
+    
 
 def setup() -> None:
   pinMode(RED_LED_PIN, "OUTPUT")
   pinMode(BUTTON_PIN, "INPUT")
 
-def scrollText(text: str) -> None: 
+def scrollText(text: str, delay = 1) -> None: 
   # Split up text into easily scrollable elements
   partions = text.split(' ')
 
@@ -39,7 +57,7 @@ def scrollText(text: str) -> None:
     else:
       setText_norefresh(lines[i].ljust(16) + "".ljust(16))
 
-    time.sleep(1)
+    time.sleep(delay)
 
 
 def checkButton(PIN):
@@ -47,3 +65,5 @@ def checkButton(PIN):
 
   return button_state
 
+def checkRotaryEncoder(PIN):
+  
