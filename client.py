@@ -27,7 +27,7 @@ if __name__ == "__main__":
         if (BUTTON_STATE):
           state = States.RECORDING
 
-      elif state == States.RECORDING
+      elif state == States.RECORDING:
           while checkButton(BUTTON_PIN):
             # Polling to debounce button
 
