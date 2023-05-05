@@ -38,9 +38,9 @@ def scrollText(text: str) -> None:
   # Output Text
   for i in range(len(lines)):
     if (len(lines) - i) >= 2:
-      setText_norefresh(lines[i] + lines[i+1])
+      setText_norefresh(lines[i].ljust(16) + lines[i+1].ljust(16))
     else:
-      setText_norefresh(lines[i] + "".ljust(16))
+      setText_norefresh(lines[i].ljust(16) + "".ljust(16))
 
     time.sleep(1)
 
