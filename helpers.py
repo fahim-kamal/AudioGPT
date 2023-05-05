@@ -50,4 +50,3 @@ def checkButton(PIN):
 
   return button_state
 
-scrollText("Hi, welcome to your new virtual assistant!")
