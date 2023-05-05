@@ -22,6 +22,11 @@ if __name__ == "__main__":
       BUTTON_STATE = digitalRead(BUTTON_PIN)
 
       if (BUTTON_STATE):
+        # Start LED to indicate recording in process
+        digitalWrite(RED_LED_PIN, 1)
+
+
+
         scrollText("You have clicked the button!")
 
 

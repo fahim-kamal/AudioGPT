@@ -2,11 +2,11 @@ from grovepi import *
 from grove_rgb_lcd import *
 import time
 
-LED_PIN = 7
+RED_LED_PIN = 7
 BUTTON_PIN = 2
 
 def setup() -> None:
-  pinMode(LED_PIN, "OUTPUT")
+  pinMode(RED_LED_PIN, "OUTPUT")
   pinMode(BUTTON_PIN, "INPUT")
 
 def scrollText(text: str) -> None: 
