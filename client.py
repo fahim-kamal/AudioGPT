@@ -15,23 +15,15 @@ state = States.STARTUP
 
 STARTUP_MSG = "Welcome to AudioGPT, an audio interface for accessing ChatGPT!"
 
-def calculateDelay(angle: int) -> int:
-  # goes from 0.5 -> 5 seconds 
-  return -0.015 * angle + 5 
-
-
-
-
 if __name__ == "__main__":
   try:
     while True:
       rs = RotarySensor(ROTARY_PIN)
-      delay = calculateDelay(rs.read())
 
       if state == States.STARTUP:
         setup()
         setRGB(124, 242, 0)
-        scrollText(STARTUP_MSG, delay)
+        scrollText(STARTUP_MSG, calculateDelay, rs)
 
         state = States.IDLE
 
@@ -66,7 +58,7 @@ if __name__ == "__main__":
             res = requests.post(SERVER_URL + "/upload", files={"audio": file})
 
             setRGB(124, 242, 0)
-            scrollText(res.json()['text'], delay)
+            scrollText(res.json()['text'], calculateDelay, rs)
 
           state = States.IDLE
 

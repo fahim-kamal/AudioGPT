@@ -21,13 +21,16 @@ class RotarySensor():
         voltage = sensor_value * self.ADC_REF / 1023
         degrees = (voltage * self.FULL_ANGLE) / self.GROVE_VCC
         return round(degrees)
-    
+
+def calculateDelay(angle: int) -> int:
+  # goes from 0.5 -> 5 seconds 
+  return -0.015 * angle + 5 
 
 def setup() -> None:
   pinMode(RED_LED_PIN, "OUTPUT")
   pinMode(BUTTON_PIN, "INPUT")
 
-def scrollText(text: str, delay = 1) -> None: 
+def scrollText(text: str, calcDelay, sensor: RotarySensor) -> None: 
   # Split up text into easily scrollable elements
   partions = text.split(' ')
 
@@ -52,6 +55,9 @@ def scrollText(text: str, delay = 1) -> None:
   
   # Output Text
   for i in range(len(lines)):
+    val = sensor.read()
+    delay = calcDelay(val)
+
     if (len(lines) - i) >= 2:
       setText_norefresh(lines[i].ljust(16) + lines[i+1].ljust(16))
     else:
