@@ -42,7 +42,7 @@ if __name__ == "__main__":
 
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
-          setRGB(255,0,0)
+          setRGB(255,255,0)
           setText("Recording...")
 
           record(checkButton, BUTTON_PIN)
