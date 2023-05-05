@@ -31,6 +31,23 @@ def scrollText(text: str) -> None:
         partions.pop(0)
     
     line1.ljust(16)
+
+    new_length = 0
+
+    while len(partions) != 0:
+      line2 = ""
+      new_length = len(partions[0]) 
+
+      while new_length <= 16 and len(partions) != 0:
+        if len(line2) != 0 and len(line2) <= 15:
+          line2 += " "
+
+        new_length = len(line2) + len(partions[0])
+
+        if (new_length <= 16):
+          line2 += partions[0]
+          partions.pop(0)
+
     line2 = "".ljust(16)
 
     # Output Text
