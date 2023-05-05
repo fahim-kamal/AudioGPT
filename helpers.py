@@ -40,7 +40,7 @@ def scrollText(text: str) -> None:
     if len(lines) >= 2:
       setText_norefresh(lines[i] + lines[i+1])
       lines.pop()
-    else
+    else:
       setText_norefresh(lines[i] + "".ljust(16))
 
     time.sleep(1)
