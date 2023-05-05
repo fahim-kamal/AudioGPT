@@ -62,7 +62,7 @@ if __name__ == "__main__":
 
 
   except KeyboardInterrupt:
-    os.remove(./output.wav)
+    os.remove("./output.wav")
     setRGB(0,0,0)
     setText("".ljust(32))
     print("\n" + "Service ended.")
