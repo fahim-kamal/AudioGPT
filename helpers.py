@@ -10,9 +10,6 @@ def setup() -> None:
   pinMode(BUTTON_PIN, "INPUT")
 
 def scrollText(text: str) -> None: 
-  # Set up backlight
-  # setRGB(124, 242, 0)
-
   # Split up text into easily scrollable elements
   partions = text.split(' ')
 

@@ -21,11 +21,13 @@ if __name__ == "__main__":
     while True:
       if state == States.STARTUP:
         setup()
+        setRGB(124, 242, 0)
         scrollText(STARTUP_MSG)
 
         state = States.IDLE
 
       elif state == States.IDLE:
+        setRGB(255, 255, 0)
         setText_norefresh("Waiting for".ljust(16) + "your question!".ljust(16))
 
         BUTTON_STATE = digitalRead(BUTTON_PIN)
@@ -40,7 +42,7 @@ if __name__ == "__main__":
 
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
-          setRGB(255,160,122)
+          setRGB(255,0,0)
 
           record(checkButton, BUTTON_PIN)
 
@@ -52,6 +54,7 @@ if __name__ == "__main__":
           with open('output.wav', 'rb') as file:
             res = requests.post(SERVER_URL + "/upload", files={"audio": file})
 
+            setRGB(124, 242, 0)
             scrollText(res.json()['text'])
 
           state = States.IDLE
