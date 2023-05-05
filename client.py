@@ -2,6 +2,7 @@ from helpers import *
 from enum import Enum
 from grovepi import *
 from recording import *
+import time
 
 class States(Enum):
   STARTUP = 1
@@ -30,6 +31,7 @@ if __name__ == "__main__":
       elif state == States.RECORDING:
           while checkButton(BUTTON_PIN):
             # Polling to debounce button
+            time.sleep(0.001)
 
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
