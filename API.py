@@ -1,9 +1,11 @@
-import requests
-from decouple import config
+import requests, os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 CHAT_GPT_ENDPOINT = "https://api.openai.com/v1/chat/completions"
 
-OPEN_AI_API_KEY = config('OPEN_AI_API_KEY')
+OPEN_AI_API_KEY = os.getenv("OPEN_AI_API_KEY")
 
 
 def askChatGPT(text: str) -> str:
@@ -22,4 +24,5 @@ def askChatGPT(text: str) -> str:
     req = req['choices'][0]['message']['content']
 
     return req
+
     

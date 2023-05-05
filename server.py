@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 import subprocess, json
-from API import askChatGPT
+import API
 
 app = Flask(__name__)
 
@@ -20,7 +20,7 @@ def upload_file():
     result = json.loads(result.stdout)
     result = result['text']
 
-    text = askChatGPT(result)
+    text = API.askChatGPT(result)
 
     res = {"text": text}
 

@@ -26,7 +26,7 @@ if __name__ == "__main__":
         state = States.IDLE
 
       elif state == States.IDLE:
-        setText_norefresh("Waiting for input".ljust(32))
+        setText_norefresh("Waiting for".ljust(16) + "your question!".ljust(16))
 
         BUTTON_STATE = digitalRead(BUTTON_PIN)
 
