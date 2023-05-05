@@ -58,15 +58,9 @@ if __name__ == "__main__":
 
           # Send file to server
           with open('output.wav', 'rb') as file:
-            start = time.time()
             res = requests.post(SERVER_URL + "/upload", files={"audio": file})
             res = res.json()['text']
-            end = time.time()
             
-            delta = end - start 
-            time_delay = {"text": res, "delay": delta}
-            requests.post(SERVER_URL + "/delay", json=json.dumps(time_delay))
-
             setRGB(124, 242, 0)
             scrollText(res, delay)
 
