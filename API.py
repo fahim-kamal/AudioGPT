@@ -6,16 +6,20 @@ CHAT_GPT_ENDPOINT = "https://api.openai.com/v1/chat/completions"
 OPEN_AI_API_KEY = config('OPEN_AI_API_KEY')
 
 
-data = {
-  "model": "gpt-3.5-turbo",
-  "messages": [{"role": "user", "content": "This is a test!"}]
-}
+def askChatGPT(text: str) -> str:
+    data = {
+        "model": "gpt-3.5-turbo",
+        "messages": [{"role": "user", "content": text}]
+    }
 
+    headers = {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer " + OPEN_AI_API_KEY
+    }
 
-headers = {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer " + OPEN_AI_API_KEY
-}
+    req = requests.post(CHAT_GPT_ENDPOINT, headers=headers, json=data)
+    req = req.json()
+    req = req['choices'][0]['message']['content']
 
-req = requests.post(CHAT_GPT_ENDPOINT, headers=headers, json=data)
-print(req.json())
+    return req
+    
