@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import subprocess, json
 from API import askChatGPT
 
@@ -22,4 +22,6 @@ def upload_file():
 
     text = askChatGPT(result)
 
-    return text, 200
+    res = {"text": text}
+
+    return jsonify(res), 200

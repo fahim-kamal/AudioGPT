@@ -50,7 +50,9 @@ if __name__ == "__main__":
 
           # Send file to server
           with open('output.wav', 'rb') as file:
-            requests.post(SERVER_URL + "/upload", files={"audio": file})
+            res = requests.post(SERVER_URL + "/upload", files={"audio": file})
+
+            scrollText(res.json()['text'])
 
           state = States.IDLE
 
