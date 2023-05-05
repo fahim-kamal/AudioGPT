@@ -41,13 +41,14 @@ if __name__ == "__main__":
 
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
-          setRGB(255,255,0)
+          setRGB(255,0,0)
           setText("Recording...")
 
           record(checkButton, BUTTON_PIN)
 
           # Turn off Recording Status LED and update LCD
           digitalWrite(RED_LED_PIN, 0)
+          setRGB(255,255,0)
           setText_norefresh("Processing".ljust(16) + "Recording".ljust(16))
 
           # Send file to server
