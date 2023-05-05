@@ -16,6 +16,8 @@ def scrollText(text: str) -> None:
   # Split up text into easily scrollable elements
   partions = text.split(' ')
 
+  lines = [];
+
   while len(partions) != 0:
     line1 = ""
     new_length = len(partions[0])
@@ -31,28 +33,21 @@ def scrollText(text: str) -> None:
         partions.pop(0)
     
     line1.ljust(16)
+    lines.append(line1)
 
-    new_length = 0
+  # Output Text
+  for i in len(lines):
+    if len(lines) >= 2:
+      setText_norefresh(lines[i] + lines[i+1])
+      lines.pop()
+    else
+      setText_norefresh(lines[i] + "".ljust(16))
 
-    while len(partions) != 0:
-      line2 = ""
-      new_length = len(partions[0]) 
-
-      while new_length <= 16 and len(partions) != 0:
-        if len(line2) != 0 and len(line2) <= 15:
-          line2 += " "
-
-        new_length = len(line2) + len(partions[0])
-
-        if (new_length <= 16):
-          line2 += partions[0]
-          partions.pop(0)
-
-    line2 = "".ljust(16)
-
-    # Output Text
-    setText_norefresh(line1 + line2)
     time.sleep(1)
+
+
+
+
 
 def checkButton(PIN):
   button_state = digitalRead(PIN)
