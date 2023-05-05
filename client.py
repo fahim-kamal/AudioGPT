@@ -20,10 +20,17 @@ if __name__ == "__main__":
         scrollText(STARTUP_MSG)
 
         state = States.IDLE
+
       elif state == States.IDLE:
         BUTTON_STATE = digitalRead(BUTTON_PIN)
 
         if (BUTTON_STATE):
+          state = States.RECORDING
+
+      elif state == States.RECORDING
+          while checkButton(BUTTON_PIN):
+            # Polling to debounce button
+
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
 
@@ -32,9 +39,12 @@ if __name__ == "__main__":
           # Turn off Recording Status LED
           digitalWrite(RED_LED_PIN, 0)
 
+          scrollText("Processing Recording")
+
+          state = States.IDLE
 
 
-          scrollText("You have clicked the button!")
+
   except KeyboardInterrupt:
     print("\n" + "Service ended.")
 
