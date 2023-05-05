@@ -2,7 +2,7 @@ from helpers import *
 from enum import Enum
 from grovepi import *
 from recording import *
-import time, requests, os
+import time, requests, os, json
 
 SERVER_URL = "http://172.20.10.2:5000"
 
@@ -58,10 +58,17 @@ if __name__ == "__main__":
 
           # Send file to server
           with open('output.wav', 'rb') as file:
+            start = time.time()
             res = requests.post(SERVER_URL + "/upload", files={"audio": file})
+            res = res.json()['text']
+            end = time.time()
+            
+            delta = end - start 
+            delay = {"text": res, "transcription": delta}
+            requests.post(SERVER_URL + "/delay", json=json.dumps(delay))
 
             setRGB(124, 242, 0)
-            scrollText(res.json()['text'], delay)
+            scrollText(res, delay)
 
           state = States.IDLE
 
