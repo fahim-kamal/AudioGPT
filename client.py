@@ -37,7 +37,7 @@ if __name__ == "__main__":
         if (BUTTON_STATE):
           while checkButton(BUTTON_PIN):
             # Polling to debounce button
-            time.sleep(0.25)
+            time.sleep(0.005)
 
           state = States.RECORDING
 
