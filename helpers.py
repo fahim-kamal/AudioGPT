@@ -38,7 +38,7 @@ def scrollText(text: str) -> None:
   print(lines)
 
   # Output Text
-  for i in len(lines):
+  for i in range(len(lines)):
     if len(lines) >= 2:
       setText_norefresh(lines[i] + lines[i+1])
       lines.pop()
