@@ -30,5 +30,9 @@ def upload_file():
 def upload_delay():
     with open("output.txt", "at") as file:
         data = request.get_json(force=True)
-        file.write(data)
+        data = json.loads(data)
+        file.write(data["text"])
+        file.write(data["delay"])
+
+    return "Success", 200
 

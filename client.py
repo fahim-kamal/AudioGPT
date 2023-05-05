@@ -64,7 +64,7 @@ if __name__ == "__main__":
             end = time.time()
             
             delta = end - start 
-            time_delay = {"text": res, "transcription": delta}
+            time_delay = {"text": res, "delay": delta}
             requests.post(SERVER_URL + "/delay", json=json.dumps(time_delay))
 
             setRGB(124, 242, 0)
