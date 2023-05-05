@@ -34,6 +34,8 @@ def scrollText(text: str) -> None:
     
     line1.ljust(16)
     lines.append(line1)
+  
+  print(lines)
 
   # Output Text
   for i in len(lines):
