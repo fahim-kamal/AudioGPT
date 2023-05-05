@@ -65,5 +65,3 @@ def checkButton(PIN):
 
   return button_state
 
-def checkRotaryEncoder(PIN):
-  
