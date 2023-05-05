@@ -8,7 +8,7 @@ def hello_world():
 
 @app.route("/upload", methods=['POST'])
 def upload_file():
-    uploaded_file = request.files['file']
+    uploaded_file = request.files['audio']
 
     with open("output.wav", "wb") as binary_file:
         binary_file.write(upload_file)

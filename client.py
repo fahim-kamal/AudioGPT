@@ -47,13 +47,8 @@ if __name__ == "__main__":
           setText_norefresh("Processing".ljust(16) + "Recording".ljust(16))
 
           # Send file to server
-          headers = {
-              "Content-Type": "audio/wav",
-          }
-
-          files = {'file': open('output.wav', "rb")}
-
-          req = requests.post(SERVER_URL + "/upload", files=files)
+          with open('output.wav', 'rb') as file:
+            requests.post(SERVER_URL + "/upload", files={"audio": file})
 
           state = States.IDLE
 
