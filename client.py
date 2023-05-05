@@ -2,8 +2,7 @@ from helpers import *
 from enum import Enum
 from grovepi import *
 from recording import *
-import time
-import requests
+import time, requests, os
 
 SERVER_URL = "http://172.20.10.2:5000"
 
@@ -63,6 +62,7 @@ if __name__ == "__main__":
 
 
   except KeyboardInterrupt:
+    os.remove(./output.wav)
     setRGB(0,0,0)
     setText("".ljust(32))
     print("\n" + "Service ended.")
