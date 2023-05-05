@@ -11,7 +11,7 @@ def setup() -> None:
 
 def scrollText(text: str) -> None: 
   # Set up backlight
-  setRGB(124, 242, 0)
+  # setRGB(124, 242, 0)
 
   # Split up text into easily scrollable elements
   partions = text.split(' ')
@@ -35,23 +35,19 @@ def scrollText(text: str) -> None:
     line1.ljust(16)
     lines.append(line1)
   
-  print(lines)
-
   # Output Text
   for i in range(len(lines)):
-    if len(lines) >= 2:
+    if (len(lines) - i) >= 2:
       setText_norefresh(lines[i] + lines[i+1])
-      lines.pop()
     else:
       setText_norefresh(lines[i] + "".ljust(16))
 
     time.sleep(1)
 
 
-
-
-
 def checkButton(PIN):
   button_state = digitalRead(PIN)
 
   return button_state
+
+scrollText("Hi, welcome to your new virtual assistant!")
