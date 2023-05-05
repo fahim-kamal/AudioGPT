@@ -34,13 +34,13 @@ if __name__ == "__main__":
         BUTTON_STATE = digitalRead(BUTTON_PIN)
 
         if (BUTTON_STATE):
-          state = States.RECORDING
-
-      elif state == States.RECORDING:
           while checkButton(BUTTON_PIN):
             # Polling to debounce button
             time.sleep(0.001)
 
+          state = States.RECORDING
+
+      elif state == States.RECORDING:
           # Start LED to indicate recording in process
           digitalWrite(RED_LED_PIN, 1)
           setRGB(255,0,0)
