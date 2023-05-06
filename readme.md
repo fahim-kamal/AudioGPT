@@ -14,17 +14,18 @@ Before you begin, configure your API keys for OpenAI and AssemblyAI in a .env fi
 
 `python3 client.py`
 
-### To output the visualization of the time delay for each step:
+### To output the visualization of the time delay for each step: [can be done without running server.py or client.py based on the history in output.txt]
 
 `python3 out.py`
 
 ### Hardware
 
 [GrovePI Connections](https://imgur.com/1EZ1apw)<br>
-Rotary Encoder: A0
-Button: D2
-Red LED: D7
-LCD Display: Any I2C Port
+
+- Rotary Encoder: A0
+- Button: D2
+- Red LED: D7
+- LCD Display: Any I2C Port
 
 ### Members:
 
