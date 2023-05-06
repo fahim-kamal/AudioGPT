@@ -6,10 +6,6 @@ app = Flask(__name__)
 
 SERVER_URL = "http://172.20.10.2:5000"
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, World!</p>"
-
 @app.route("/upload", methods=['POST'])
 def upload_file():
     uploaded_file = request.files['audio'].read()
@@ -41,13 +37,13 @@ def upload_delay():
     with open("output.txt", "at") as file:
         data = request.get_json(force=True)
         data = json.loads(data)
-        file.write(data["question"])
+        file.write(data.get("question"))
         file.write("\n")
-        file.write(str(data["q_delay"]))
+        file.write(str(data.get("q_delay")))
         file.write("\n")
-        file.write(data["answer"])
+        file.write(data.get("answer"))
         file.write("\n")
-        file.write(str(data["a_delay"]))
+        file.write(str(data.get("a_delay")))
         file.write("\n")
 
     return "Success", 200
