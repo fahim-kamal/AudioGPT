@@ -39,3 +39,5 @@ See requirements.txt and download the grovepi packages for RPi (https://github.c
 - Fahim Kamal
 
 ### Link to Demo Video:
+
+[https://docs.google.com/presentation/d/1Hqi-49sFnZNNGlGtmkeTU0-TbGNcMvXpPANK14By9Ww/edit?usp=sharing]
