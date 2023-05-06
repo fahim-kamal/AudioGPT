@@ -27,6 +27,13 @@ Before you begin, configure your API keys for OpenAI and AssemblyAI in a .env fi
 - Red LED: D7
 - LCD Display: Any I2C Port
 
+### Dependenies
+
+See requirements.txt and be sure to download the grovepi packages for RPi (https://github.com/DexterInd/GrovePi).<br>
+`python3 -m venv ./`<br>
+`source ./bin/activate`<br>
+`pip3 install -r requirements.txt`<br>
+
 ### Members:
 
 - Fahim Kamal
