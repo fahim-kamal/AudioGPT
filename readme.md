@@ -4,7 +4,7 @@ AudioGPT is a physical, audio interface for ChatGPT that uses the RaspberryPI an
 
 ### Quickstart:
 
-Before you begin, configure your API keys for OpenAI and AssemblyAI in a .env file. API.py expects the OpenAI key to be called OPEN_AI_API_KEY and AssemblyAI's API key is configured through their CLI. AudioGPT requires the use of OpenAI's API for chat completion and AssemblyAI for voice transcription.
+Before you begin, configure your API keys for OpenAI and AssemblyAI in a .env file. API.py expects the OpenAI key to be called OPEN_AI_API_KEY and AssemblyAI's API key is configured through their CLI. AudioGPT requires the use of OpenAI's API for chat completion and AssemblyAI for voice transcription. Be sure to change the audio output device in recording.py to one avaiable on the RaspberryPi.
 
 ### Start up the server on a VM/local machine that is on the same wifi network as the RPi:
 
@@ -20,7 +20,7 @@ Before you begin, configure your API keys for OpenAI and AssemblyAI in a .env fi
 
 ### Hardware
 
-[GrovePI Connections](https://imgur.com/1EZ1apw)
+[GrovePI Connections](https://imgur.com/1EZ1apw)<br>
 Rotary Encoder: A0
 Button: D2
 Red LED: D7
